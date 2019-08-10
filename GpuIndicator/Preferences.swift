@@ -8,8 +8,12 @@ enum GpuType {
 
 class Preferences {
     
+    public static let defaultIntegratedGpuColor = NSColor.controlColor
+    public static let defaultDiscreteGpuColor = NSColor.systemBlue
+    public static let defaultRemovableGpuColor = NSColor.systemGreen
+    
     private static let keyIntegratedGpuColor = "keyPrefIntegratedGpuColor"
-    private static let keyDedicatedGpuColor = "keyPrefDedicatedGpuColor"
+    private static let keyDiscreteGpuColor = "keyPrefDiscreteGpuColor"
     private static let keyRemovableGpuColor = "keyPrefRemovableGpuColor"
 
     private init() {}
@@ -17,13 +21,13 @@ class Preferences {
     public static func getColor(gpuType: GpuType) -> NSColor {
         switch (gpuType) {
         case .Integrated:
-            return getColor(key: keyIntegratedGpuColor) ?? NSColor.controlColor
+            return getColor(key: keyIntegratedGpuColor) ?? defaultIntegratedGpuColor
             
         case .Discrete:
-            return getColor(key: keyDedicatedGpuColor) ?? NSColor.systemBlue
+            return getColor(key: keyDiscreteGpuColor) ?? defaultDiscreteGpuColor
             
         case .Removable:
-            return getColor(key: keyRemovableGpuColor) ?? NSColor.systemGreen
+            return getColor(key: keyRemovableGpuColor) ?? defaultRemovableGpuColor
         }
     }
 
@@ -32,9 +36,20 @@ class Preferences {
         case .Integrated:
             setColor(key: keyIntegratedGpuColor, value: color)
         case .Discrete:
-            setColor(key: keyDedicatedGpuColor, value: color)
+            setColor(key: keyDiscreteGpuColor, value: color)
         case .Removable:
             setColor(key: keyRemovableGpuColor, value: color)
+        }
+    }
+    
+    public static func clearColor(gpuType: GpuType) {
+        switch (gpuType) {
+        case .Integrated:
+            UserDefaults.standard.removeObject(forKey: keyIntegratedGpuColor)
+        case .Discrete:
+            UserDefaults.standard.removeObject(forKey: keyDiscreteGpuColor)
+        case .Removable:
+            UserDefaults.standard.removeObject(forKey: keyRemovableGpuColor)
         }
     }
     

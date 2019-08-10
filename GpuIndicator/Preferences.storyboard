@@ -32,11 +32,11 @@
             <objects>
                 <viewController id="ovk-JM-eMU" customClass="PreferencesViewController" customModule="GpuIndicator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="cmZ-pW-9WU">
-                        <rect key="frame" x="0.0" y="0.0" width="254" height="154"/>
+                        <rect key="frame" x="0.0" y="0.0" width="347" height="154"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <gridView fixedFrame="YES" xPlacement="trailing" yPlacement="center" rowAlignment="none" rowSpacing="12" columnSpacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="c6A-6M-bOE">
-                                <rect key="frame" x="20" y="20" width="218" height="114"/>
+                                <rect key="frame" x="20" y="20" width="301" height="114"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <rows>
                                     <gridRow id="o8j-1y-vSg"/>
@@ -46,6 +46,7 @@
                                 <columns>
                                     <gridColumn id="kk5-gx-TxG"/>
                                     <gridColumn id="wlK-b4-luB"/>
+                                    <gridColumn id="lvJ-V4-VQR"/>
                                 </columns>
                                 <gridCells>
                                     <gridCell row="o8j-1y-vSg" column="kk5-gx-TxG" id="Rwe-H3-Edb">
@@ -71,6 +72,18 @@
                                             </connections>
                                         </colorWell>
                                     </gridCell>
+                                    <gridCell row="o8j-1y-vSg" column="lvJ-V4-VQR" id="D1Z-u4-3Bu">
+                                        <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DNz-9p-VQP">
+                                            <rect key="frame" x="232" y="82" width="75" height="32"/>
+                                            <buttonCell key="cell" type="push" title="Reset" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Chh-Gd-u0f">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="onActionResetIntegratedGpuColor:" target="ovk-JM-eMU" id="kd0-nQ-53b"/>
+                                            </connections>
+                                        </button>
+                                    </gridCell>
                                     <gridCell row="ufm-wD-5Bc" column="kk5-gx-TxG" id="xJL-aY-R63">
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sBj-tL-IG6">
                                             <rect key="frame" x="14" y="49" width="86" height="17"/>
@@ -94,6 +107,18 @@
                                             </connections>
                                         </colorWell>
                                     </gridCell>
+                                    <gridCell row="ufm-wD-5Bc" column="lvJ-V4-VQR" id="fbm-uy-5HC">
+                                        <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jdn-Di-WwV">
+                                            <rect key="frame" x="232" y="40" width="75" height="32"/>
+                                            <buttonCell key="cell" type="push" title="Reset" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="N6g-Rs-aij">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="onActionResetDiscreteGpuColor:" target="ovk-JM-eMU" id="3tg-YT-6gU"/>
+                                            </connections>
+                                        </button>
+                                    </gridCell>
                                     <gridCell row="wNb-yt-kEv" column="kk5-gx-TxG" id="ON6-1w-1jE">
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iv8-Gm-urc">
                                             <rect key="frame" x="-2" y="7" width="102" height="17"/>
@@ -116,6 +141,18 @@
                                             </connections>
                                         </colorWell>
                                     </gridCell>
+                                    <gridCell row="wNb-yt-kEv" column="lvJ-V4-VQR" id="z99-Nl-vev">
+                                        <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CcW-9w-sO5">
+                                            <rect key="frame" x="232" y="-2" width="75" height="32"/>
+                                            <buttonCell key="cell" type="push" title="Reset" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Cen-SX-m5e">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="onActionResetRemovableGpuColor:" target="ovk-JM-eMU" id="bQZ-Hi-tM1"/>
+                                            </connections>
+                                        </button>
+                                    </gridCell>
                                 </gridCells>
                             </gridView>
                         </subviews>
@@ -128,7 +165,7 @@
                 </viewController>
                 <customObject id="R7q-c4-jI0" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="769"/>
+            <point key="canvasLocation" x="185.5" y="769"/>
         </scene>
     </scenes>
 </document>

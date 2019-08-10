@@ -39,20 +39,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(_ aNotification: Notification) {
     }
     
-    func onGpuIndicatorColorChange(gpuType: GpuType, color: NSColor) {
+    func updateGpuIndicatorColor(gpuType: GpuType, color: NSColor, save: Bool = true) {
         switch (gpuType) {
         case .Integrated:
             integratedGpuImage = createStatusIcon(color: color)
-            statusItem.button?.image = integratedGpuImage
         case .Discrete:
             discreteGpuImage = createStatusIcon(color: color)
-            statusItem.button?.image = discreteGpuImage
         case .Removable:
             removableGpuImage = createStatusIcon(color: color)
-            statusItem.button?.image = removableGpuImage
         }
         
-        Preferences.setColor(gpuType: gpuType, color: color)
+        if (save) {
+            Preferences.setColor(gpuType: gpuType, color: color)
+        }
+        
+        updateGpuIndicator()
     }
     
     @objc
