@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="kOD-76-iCh">
+            <objects>
+                <windowController storyboardIdentifier="Preferences" showSeguePresentationStyle="single" id="HpQ-Vc-NL4" sceneMemberID="viewController">
+                    <window key="window" title="GPU Indicator Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="7eb-Y7-Auz">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="245" y="301" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <value key="minSize" type="size" width="480" height="270"/>
+                        <value key="maxSize" type="size" width="480" height="270"/>
+                        <connections>
+                            <outlet property="delegate" destination="HpQ-Vc-NL4" id="hiS-mK-aAQ"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="ovk-JM-eMU" kind="relationship" relationship="window.shadowedContentViewController" id="t5g-nk-77B"/>
+                    </connections>
+                </windowController>
+                <customObject id="FGX-eB-M6w" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--Preferences View Controller-->
+        <scene sceneID="u54-1k-6Dw">
+            <objects>
+                <viewController id="ovk-JM-eMU" customClass="PreferencesViewController" customModule="GpuIndicator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="cmZ-pW-9WU">
+                        <rect key="frame" x="0.0" y="0.0" width="254" height="154"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <gridView fixedFrame="YES" xPlacement="trailing" yPlacement="center" rowAlignment="none" rowSpacing="12" columnSpacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="c6A-6M-bOE">
+                                <rect key="frame" x="20" y="20" width="218" height="114"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <rows>
+                                    <gridRow id="o8j-1y-vSg"/>
+                                    <gridRow id="ufm-wD-5Bc"/>
+                                    <gridRow id="wNb-yt-kEv"/>
+                                </rows>
+                                <columns>
+                                    <gridColumn id="kk5-gx-TxG"/>
+                                    <gridColumn id="wlK-b4-luB"/>
+                                </columns>
+                                <gridCells>
+                                    <gridCell row="o8j-1y-vSg" column="kk5-gx-TxG" id="Rwe-H3-Edb">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1tA-YW-q9U">
+                                            <rect key="frame" x="2" y="91" width="98" height="17"/>
+                                            <textFieldCell key="cell" alignment="justified" title="Integrated GPU" id="d6m-zZ-6r5">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="o8j-1y-vSg" column="wlK-b4-luB" id="LbT-6l-MHS">
+                                        <colorWell key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="gQp-eN-atp">
+                                            <rect key="frame" x="118" y="84" width="100" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="PCA-dE-d6U"/>
+                                                <constraint firstAttribute="width" constant="100" id="fFT-BT-QYT"/>
+                                            </constraints>
+                                            <color key="color" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <action selector="onActionChangeColorIntegratedGpu:" target="ovk-JM-eMU" id="XSQ-wZ-tkZ"/>
+                                            </connections>
+                                        </colorWell>
+                                    </gridCell>
+                                    <gridCell row="ufm-wD-5Bc" column="kk5-gx-TxG" id="xJL-aY-R63">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sBj-tL-IG6">
+                                            <rect key="frame" x="14" y="49" width="86" height="17"/>
+                                            <textFieldCell key="cell" alignment="justified" title="Discrete GPU" id="1On-ag-WqY">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="ufm-wD-5Bc" column="wlK-b4-luB" id="PD2-vl-pWA">
+                                        <colorWell key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="tO6-jg-9V6">
+                                            <rect key="frame" x="118" y="42" width="100" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="KRh-Zf-fad"/>
+                                                <constraint firstAttribute="width" constant="100" id="ZxS-cr-w8h"/>
+                                            </constraints>
+                                            <color key="color" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <action selector="onActionChangeColorDiscreteGpu:" target="ovk-JM-eMU" id="Sma-0O-vzw"/>
+                                            </connections>
+                                        </colorWell>
+                                    </gridCell>
+                                    <gridCell row="wNb-yt-kEv" column="kk5-gx-TxG" id="ON6-1w-1jE">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iv8-Gm-urc">
+                                            <rect key="frame" x="-2" y="7" width="102" height="17"/>
+                                            <textFieldCell key="cell" alignment="justified" title="Removable GPU" id="ySS-3Z-BRl">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="wNb-yt-kEv" column="wlK-b4-luB" id="mrW-It-VSL">
+                                        <colorWell key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="u6O-lr-Ik6">
+                                            <rect key="frame" x="118" y="0.0" width="100" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="YO1-Nc-XQx"/>
+                                            </constraints>
+                                            <color key="color" name="systemGreenColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <action selector="onActionChangeColorRemovableGpu:" target="ovk-JM-eMU" id="Y6u-jc-55t"/>
+                                            </connections>
+                                        </colorWell>
+                                    </gridCell>
+                                </gridCells>
+                            </gridView>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="discreteGpuColorWell" destination="tO6-jg-9V6" id="F8a-uX-wQ8"/>
+                        <outlet property="integratedGpuColorWell" destination="gQp-eN-atp" id="Xbj-6s-bKS"/>
+                        <outlet property="removableGpuColorWell" destination="u6O-lr-Ik6" id="XLg-ut-5mp"/>
+                    </connections>
+                </viewController>
+                <customObject id="R7q-c4-jI0" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="769"/>
+        </scene>
+    </scenes>
+</document>

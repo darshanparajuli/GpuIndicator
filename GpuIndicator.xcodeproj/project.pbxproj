@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F61E952D22FE3FB3004F24D7 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E952C22FE3FB3004F24D7 /* PreferencesViewController.swift */; };
+		F61E952F22FE40A6004F24D7 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F61E952E22FE40A6004F24D7 /* Preferences.storyboard */; };
+		F61E953322FE7A95004F24D7 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E953222FE7A95004F24D7 /* Preferences.swift */; };
 		F6340F4322FD1687009A6599 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6340F4222FD1687009A6599 /* AppDelegate.swift */; };
 		F6340F4522FD1687009A6599 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6340F4422FD1687009A6599 /* Assets.xcassets */; };
 		F6340F4822FD1687009A6599 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6340F4622FD1687009A6599 /* MainMenu.xib */; };
@@ -14,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F61E952C22FE3FB3004F24D7 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
+		F61E952E22FE40A6004F24D7 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
+		F61E953222FE7A95004F24D7 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		F6340F3F22FD1687009A6599 /* GpuIndicator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GpuIndicator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6340F4222FD1687009A6599 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6340F4422FD1687009A6599 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -54,11 +60,14 @@
 			isa = PBXGroup;
 			children = (
 				F6340F4222FD1687009A6599 /* AppDelegate.swift */,
-				F6340F4422FD1687009A6599 /* Assets.xcassets */,
+				F61E952C22FE3FB3004F24D7 /* PreferencesViewController.swift */,
+				F61E953222FE7A95004F24D7 /* Preferences.swift */,
 				F6340F4622FD1687009A6599 /* MainMenu.xib */,
-				F6340F4922FD1687009A6599 /* Info.plist */,
+				F61E952E22FE40A6004F24D7 /* Preferences.storyboard */,
 				F6340F4A22FD1687009A6599 /* GpuIndicator.entitlements */,
+				F6340F4422FD1687009A6599 /* Assets.xcassets */,
 				F666086622FE3DBB0004FB61 /* .gitignore */,
+				F6340F4922FD1687009A6599 /* Info.plist */,
 			);
 			path = GpuIndicator;
 			sourceTree = "<group>";
@@ -124,6 +133,7 @@
 				F6340F4522FD1687009A6599 /* Assets.xcassets in Resources */,
 				F666086722FE3DBB0004FB61 /* .gitignore in Resources */,
 				F6340F4822FD1687009A6599 /* MainMenu.xib in Resources */,
+				F61E952F22FE40A6004F24D7 /* Preferences.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +145,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6340F4322FD1687009A6599 /* AppDelegate.swift in Sources */,
+				F61E952D22FE3FB3004F24D7 /* PreferencesViewController.swift in Sources */,
+				F61E953322FE7A95004F24D7 /* Preferences.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

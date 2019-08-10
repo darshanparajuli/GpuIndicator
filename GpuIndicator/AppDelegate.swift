@@ -8,61 +8,84 @@
 
 import Cocoa
 import MetalKit
-import UserNotifications
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     private let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
-    private var removableImage: NSImage? = nil
-    private var lowPowerImage: NSImage? = nil
-    private var discreteImage: NSImage? = nil
+    private var removableGpuImage: NSImage? = nil
+    private var integratedGpuImage: NSImage? = nil
+    private var discreteGpuImage: NSImage? = nil
     
-    private let gpuLabel = NSMenuItem(title: "GPU", action: nil, keyEquivalent: "")
+    private let gpuLabel = NSMenuItem(title: "Active GPU: n/a", action: nil, keyEquivalent: "")
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         let menu = NSMenu()
         menu.addItem(gpuLabel)
         menu.addItem(NSMenuItem.separator())
-        menu.addItem(NSMenuItem(title: "Quit", action: #selector(onQuit), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "Preferences", action: #selector(onClickPreferences), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "Quit", action: #selector(onClickQuit), keyEquivalent: ""))
         statusItem.menu = menu
         
         statusItem.button?.imageScaling = .scaleProportionallyUpOrDown
         
-        removableImage = createStatusIcon(color: NSColor.systemGreen)
-        lowPowerImage = createStatusIcon();
-        discreteImage = createStatusIcon(color: NSColor.systemBlue)
+        integratedGpuImage = createStatusIcon(color: Preferences.getColor(gpuType: .Integrated));
+        discreteGpuImage = createStatusIcon(color: Preferences.getColor(gpuType: .Discrete))
+        removableGpuImage = createStatusIcon(color: Preferences.getColor(gpuType: .Removable))
         
-        checkGpuAndSetTitle()
+        updateGpuIndicator()
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
     }
     
+    func onGpuIndicatorColorChange(gpuType: GpuType, color: NSColor) {
+        switch (gpuType) {
+        case .Integrated:
+            integratedGpuImage = createStatusIcon(color: color)
+            statusItem.button?.image = integratedGpuImage
+        case .Discrete:
+            discreteGpuImage = createStatusIcon(color: color)
+            statusItem.button?.image = discreteGpuImage
+        case .Removable:
+            removableGpuImage = createStatusIcon(color: color)
+            statusItem.button?.image = removableGpuImage
+        }
+        
+        Preferences.setColor(gpuType: gpuType, color: color)
+    }
+    
     @objc
-    private func onQuit() {
-        exit(0)
+    private func onClickQuit() {
+        NSApplication.shared.terminate(self)
+    }
+    
+    @objc
+    private func onClickPreferences() {
+        let preferencesStoryBoard = NSStoryboard.init(name: "Preferences", bundle: nil)
+        let nc = preferencesStoryBoard.instantiateController(withIdentifier: "Preferences") as! NSWindowController
+        nc.showWindow(self)
     }
     
     private func setButtonTitle(_ title: String) {
         statusItem.button?.title = title
     }
     
-    private func checkGpuAndSetTitle() {
+    private func updateGpuIndicator() {
         let screenId = NSScreen.main?.deviceDescription[NSDeviceDescriptionKey("NSScreenNumber")] as! CGDirectDisplayID
         let device = CGDirectDisplayCopyCurrentMetalDevice(screenId)!
         gpuLabel.title = "Active GPU: \(device.name)"
         if (device.isRemovable) {
-            statusItem.button?.image = removableImage
+            statusItem.button?.image = removableGpuImage
         } else if (device.isLowPower) {
-            statusItem.button?.image = lowPowerImage
+            statusItem.button?.image = integratedGpuImage
         } else {
-            statusItem.button?.image = discreteImage
+            statusItem.button?.image = discreteGpuImage
         }
     }
     
     func applicationDidChangeScreenParameters(_ notification: Notification) {
-        checkGpuAndSetTitle()
+        updateGpuIndicator()
     }
     
     private func createStatusIcon(color: NSColor? = nil) -> NSImage? {
@@ -87,14 +110,5 @@ extension NSImage {
         
         image.unlockFocus()
         return image
-    }
-}
-
-extension NSColor {
-    class func fromHex(hex: Int) -> NSColor {
-        let red = CGFloat((hex & 0xFF0000) >> 16) / 255.0
-        let green = CGFloat((hex & 0xFF00) >> 8) / 255.0
-        let blue = CGFloat((hex & 0xFF)) / 255.0
-        return NSColor(calibratedRed: red, green: green, blue: blue, alpha: 1.0)
     }
 }
