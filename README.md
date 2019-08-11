@@ -3,7 +3,10 @@ A simple active GPU indicator for macOS.
 
 ## Screenshots
 ### When integrated GPU is active
-![Integrated GPU](screenshots/integrated_gpu_indicator.png)
+<img src="screenshots/integrated_gpu_indicator.png" height="90">
 
 ### When discrete GPU is active
-![Discrete GPU](screenshots/discrete_gpu_indicator.png)
+<img src="screenshots/discrete_gpu_indicator.png" height="90">
+
+### Preferences
+<img src="screenshots/preferences.png" height="256">
