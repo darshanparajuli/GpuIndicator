@@ -73,15 +73,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     private func updateGpuIndicator() {
-        let screenId = NSScreen.main?.deviceDescription[NSDeviceDescriptionKey("NSScreenNumber")] as! CGDirectDisplayID
-        let device = CGDirectDisplayCopyCurrentMetalDevice(screenId)!
-        gpuLabel.title = "Active GPU: \(device.name)"
-        if (device.isRemovable) {
-            statusItem.button?.image = removableGpuImage
-        } else if (device.isLowPower) {
-            statusItem.button?.image = integratedGpuImage
+        if let screenId = NSScreen.main?.deviceDescription[NSDeviceDescriptionKey("NSScreenNumber")] as? CGDirectDisplayID, let device = CGDirectDisplayCopyCurrentMetalDevice(screenId) {
+            gpuLabel.title = "Active GPU: \(device.name)"
+            if (device.isRemovable) {
+                statusItem.button?.image = removableGpuImage
+            } else if (device.isLowPower) {
+                statusItem.button?.image = integratedGpuImage
+            } else {
+                statusItem.button?.image = discreteGpuImage
+            }
         } else {
-            statusItem.button?.image = discreteGpuImage
+            gpuLabel.title = "Active GPU: n/a"
+            statusItem.button?.image = integratedGpuImage
         }
     }
     
